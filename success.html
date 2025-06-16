@@ -1,0 +1,23 @@
+<!-- success.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login Successful</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Optional: Delay and redirect after OAuth
+    setTimeout(() => {
+      localStorage.setItem('isAdmin', 'true'); // Set admin flag
+      window.location.href = 'dashboard.html';
+    }, 2000);
+  </script>
+</head>
+<body class="bg-green-100 flex items-center justify-center min-h-screen">
+  <div class="text-center">
+    <h1 class="text-3xl font-bold text-green-700 mb-4">Login Successful</h1>
+    <p class="text-lg text-gray-800">Redirecting to your dashboard...</p>
+  </div>
+</body>
+</html>
