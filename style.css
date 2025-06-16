@@ -1,97 +1,175 @@
-/* style.css - Professional UI */
+/* style.css */
+
+:root {
+  --color-bg: #f4f6f8;
+  --color-primary: #2b6cb0;
+  --color-dark: #1a202c;
+  --color-light: #ffffff;
+  --color-muted: #718096;
+  --color-border: #e2e8f0;
+  --transition: 0.3s ease all;
+}
+
+[data-theme='dark'] {
+  --color-bg: #1a202c;
+  --color-primary: #3182ce;
+  --color-dark: #ffffff;
+  --color-light: #2d3748;
+  --color-muted: #a0aec0;
+  --color-border: #4a5568;
+}
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f6f9;
   margin: 0;
-  padding: 0;
-  color: #333;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-dark);
+  transition: var(--transition);
 }
 
 .container {
   max-width: 1000px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 1rem;
 }
 
 h1, h2, h3 {
-  color: #222;
+  font-weight: 600;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 30px;
+/* Login box */
+.login-container {
+  background-color: var(--color-light);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
 }
 
-input, textarea, button {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
+input[type='password'],
+input[type='text'],
+input[type='url'],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--color-border);
   border-radius: 6px;
-  outline: none;
+  margin-bottom: 16px;
+  background-color: transparent;
+  color: inherit;
 }
 
 button {
-  background-color: #0066cc;
-  color: white;
+  width: 100%;
+  padding: 12px;
   border: none;
+  border-radius: 6px;
+  background-color: var(--color-primary);
+  color: white;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #004c99;
+  background-color: #225b98;
 }
 
-.property-card {
-  display: flex;
-  background-color: #f9f9f9;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+.github-btn {
+  background: #333;
 }
 
-.property-image {
-  width: 200px;
-  height: 150px;
-  object-fit: cover;
-  flex-shrink: 0;
+.github-btn:hover {
+  background: #111;
 }
 
-.property-details {
-  padding: 15px;
-  flex-grow: 1;
+.or {
+  text-align: center;
+  margin: 20px 0;
+  color: var(--color-muted);
 }
 
-.property-details p {
-  margin: 5px 0;
-}
-
-.property-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-#error {
+.error {
   color: red;
-  margin-top: -5px;
+  font-size: 0.9rem;
+  margin-top: -10px;
   margin-bottom: 10px;
 }
 
-.github-buttons {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-top: 15px;
+/* Admin dashboard listing cards */
+.card {
+  background-color: var(--color-light);
+  border: 1px solid var(--color-border);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  transition: var(--transition);
 }
 
-hr {
-  margin: 20px 0;
+.card:hover {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+/* Scroll to Top Button */
+#scrollToTop {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  z-index: 999;
+}
+
+/* Dark Mode Toggle */
+.dark-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: var(--color-light);
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
 }
