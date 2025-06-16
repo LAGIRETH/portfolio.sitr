@@ -2,22 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EstateCore Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background: white;
+      padding: 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #2b6cb0;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    button:hover {
+      background: #225b98;
+    }
+
+    .or {
+      text-align: center;
+      margin: 15px 0;
+      color: #888;
+    }
+
+    .github-btn {
+      background: #333;
+      color: white;
+    }
+
+    .github-btn:hover {
+      background: #111;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: -10px;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to the Dashboard</h1>
+  <div class="login-container">
+    <h2>Welcome to EstateCore</h2>
 
-  <label for="password">Enter Admin Password</label>
-  <input type="password" id="password" placeholder="admin123">
-  <button id="login-btn">Login</button>
-  <p id="error" style="color: red;"></p>
+    <form id="login-form">
+      <input type="password" id="password" placeholder="Enter Admin Password" required />
+      <div class="error" id="error"></div>
+      <button type="submit">Login</button>
+    </form>
 
-  <hr>
-  <p>— OR —</p>
+    <div class="or">— OR —</div>
 
-  <button id="signup-btn">Sign Up with GitHub</button>
-  <button id="github-login-btn">Login with GitHub</button>
+    <button id="signup-btn" class="github-btn">Sign Up with GitHub</button>
+    <button id="github-login-btn" class="github-btn">Login with GitHub</button>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script src="supabase-config.js"></script>
