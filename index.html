@@ -2,69 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EstateCore Login</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Real Estate Admin Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
     body {
       margin: 0;
+      padding: 0;
       font-family: 'Inter', sans-serif;
-      background: #f4f6f8;
+      background-color: #f4f6f8;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
 
-    .login-container {
-      background: white;
+    .container {
+      background: #fff;
       padding: 40px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
+      border-radius: 12px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 400px;
+      max-width: 420px;
     }
 
     h2 {
-      margin-bottom: 20px;
       text-align: center;
       font-weight: 600;
+      margin-bottom: 30px;
+      color: #2d3748;
     }
 
     input {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 6px;
+      padding: 12px;
       border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 15px;
       font-size: 1rem;
     }
 
     button {
       width: 100%;
-      padding: 10px;
-      background: #2b6cb0;
-      color: white;
+      padding: 12px;
       border: none;
       border-radius: 6px;
+      background-color: #2b6cb0;
+      color: white;
       font-size: 1rem;
       cursor: pointer;
-      margin-bottom: 10px;
+      transition: background 0.3s;
     }
 
     button:hover {
-      background: #225b98;
+      background-color: #225b98;
     }
 
     .or {
       text-align: center;
-      margin: 15px 0;
       color: #888;
+      margin: 20px 0;
     }
 
     .github-btn {
       background: #333;
-      color: white;
+      margin-bottom: 10px;
     }
 
     .github-btn:hover {
@@ -75,24 +77,35 @@
       color: red;
       font-size: 0.9rem;
       margin-top: -10px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .footer-note {
+      font-size: 0.8rem;
+      text-align: center;
+      margin-top: 25px;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Welcome to EstateCore</h2>
+
+  <div class="container">
+    <h2>Real Estate Admin</h2>
 
     <form id="login-form">
       <input type="password" id="password" placeholder="Enter Admin Password" required />
-      <div class="error" id="error"></div>
-      <button type="submit">Login</button>
+      <span class="error" id="error"></span>
+      <button type="submit">Login as Admin</button>
     </form>
 
     <div class="or">— OR —</div>
 
     <button id="signup-btn" class="github-btn">Sign Up with GitHub</button>
     <button id="github-login-btn" class="github-btn">Login with GitHub</button>
+
+    <div class="footer-note">Demo for internal use</div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
