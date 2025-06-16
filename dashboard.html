@@ -2,39 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard - Real Estate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="app.js"></script>
 </head>
-<body class="bg-gray-100 text-gray-800">
-
-  <nav class="bg-white shadow px-6 py-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold">RealEstatePro</h1>
-    <div class="flex items-center gap-4">
-      <span id="user-email" class="text-sm"></span>
-      <button id="logoutBtn" class="bg-red-600 text-white px-4 py-1 rounded">Logout</button>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-blue-700 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">Real Estate Admin Dashboard</h1>
+      <button id="logout" class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded">Logout</button>
     </div>
-  </nav>
+  </header>
 
-  <main class="p-6 max-w-5xl mx-auto">
-    <h2 class="text-2xl font-semibold mb-6">Dashboard</h2>
+  <main class="container mx-auto py-8">
+    <h2 class="text-2xl font-semibold mb-4">Add New Property</h2>
+    <form id="property-form" class="grid gap-4 mb-8">
+      <input type="text" id="title" placeholder="Property Title" class="border p-2 rounded" required />
+      <input type="text" id="location" placeholder="Location" class="border p-2 rounded" required />
+      <input type="number" id="price" placeholder="Price" class="border p-2 rounded" required />
+      <input type="url" id="image" placeholder="Image URL" class="border p-2 rounded" required />
+      <textarea id="description" placeholder="Description" class="border p-2 rounded"></textarea>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add Property</button>
+    </form>
 
-    <div id="admin-panel" class="hidden">
-      <h3 class="text-xl font-bold mb-4">Admin Panel</h3>
-      <form id="propertyForm" class="space-y-4 bg-white p-4 shadow rounded">
-        <input type="text" id="title" placeholder="Property Title" class="w-full p-2 border border-gray-300 rounded" required />
-        <input type="text" id="location" placeholder="Location" class="w-full p-2 border border-gray-300 rounded" required />
-        <input type="number" id="price" placeholder="Price ($)" class="w-full p-2 border border-gray-300 rounded" required />
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Add Property</button>
-      </form>
-    </div>
-
-    <div class="mt-10">
-      <h3 class="text-xl font-semibold mb-4">Available Properties</h3>
-      <div id="propertyList" class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"></div>
+    <div id="properties" class="space-y-6">
+      <!-- Property Listings Go Here -->
     </div>
   </main>
 
+  <script src="app.js"></script>
 </body>
 </html>
