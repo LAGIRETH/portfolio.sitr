@@ -1,104 +1,34 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EstateCore – Properties</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f6f8;
-    }
-
-    header {
-      background: #2b6cb0;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: 0.3s;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .card:hover {
-      transform: scale(1.02);
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .card-body {
-      padding: 15px;
-    }
-
-    .card-title {
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin-bottom: 5px;
-    }
-
-    .card-location {
-      font-size: 0.9rem;
-      color: #555;
-      margin-bottom: 10px;
-    }
-
-    .card-price {
-      color: #2b6cb0;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
-    footer {
-      margin-top: 40px;
-      text-align: center;
-      color: #aaa;
-      font-size: 0.9rem;
-      padding-bottom: 20px;
-    }
-  </style>
+  <title>EstateCore - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <header>
-    <h1>EstateCore Listings</h1>
-    <p>Browse our available properties</p>
-  </header>
 
-  <div class="container">
-    <div class="grid" id="property-list">
-      <!-- Listings will be inserted here -->
-    </div>
+  <div class="login-container">
+    <h2>Welcome to <span style="color: #2b6cb0;">EstateCore</span></h2>
+
+    <form id="login-form">
+      <input type="password" id="password" placeholder="Admin Password" required />
+      <div class="error" id="error"></div>
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="or">— OR —</div>
+
+    <button id="signup-btn" class="github-btn">Sign Up with GitHub</button>
+    <button id="github-login-btn" class="github-btn">Login with GitHub</button>
   </div>
 
-  <footer>
-    &copy; 2025 EstateCore. All rights reserved.
-  </footer>
+  <button class="dark-toggle" onclick="toggleTheme()">🌓 Theme</button>
+
+  <!-- Scroll to top (in case of scrollable error) -->
+  <button id="scrollToTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</button>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <script src="supabase-config.js"></script>
