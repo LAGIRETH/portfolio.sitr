@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Property Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f6f8;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .property-img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    h1 {
+      margin: 20px 0 10px;
+      font-size: 28px;
+      color: #2b6cb0;
+    }
+
+    .location, .price {
+      color: #666;
+      font-size: 18px;
+    }
+
+    .description {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="property-details"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    const properties = JSON.parse(localStorage.getItem("properties") || "[]");
+
+    const prop = properties[Number(id)];
+
+    if (!prop) {
+      document.getElementById("property-details").innerHTML = "<h1>Property Not Found</h1>";
+    } else {
+      document.getElementById("property-details").innerHTML = `
+        <img class="property-img" src="${prop.image || 'https://via.placeholder.com/800x400'}" alt="Property" />
+        <h1>${prop.title}</h1>
+        <div class="location">📍 ${prop.location}</div>
+        <div class="price">💲 ${prop.price}</div>
+        <div class="description">${prop.description || 'No description provided.'}</div>
+      `;
+    }
+  </script>
+</body>
+</html>
