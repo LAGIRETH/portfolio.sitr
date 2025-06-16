@@ -1,128 +1,54 @@
+<!-- dashboard.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Panel - EstateCore</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #f4f6f8;
-      padding: 40px;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-weight: 600;
-    }
-
-    form {
-      display: grid;
-      gap: 10px;
-      margin-bottom: 30px;
-    }
-
-    input, textarea {
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      width: 100%;
-    }
-
-    button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    .add-btn {
-      background: #2b6cb0;
-      color: white;
-      margin-top: 10px;
-    }
-
-    .add-btn:hover {
-      background: #225b98;
-    }
-
-    .logout-btn {
-      background: #e53e3e;
-      color: white;
-      float: right;
-    }
-
-    .logout-btn:hover {
-      background: #c53030;
-    }
-
-    .property {
-      margin-top: 20px;
-      border-top: 1px solid #ccc;
-      padding-top: 20px;
-    }
-
-    .property img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-
-    .property h3 {
-      margin: 10px 0 5px;
-    }
-
-    .property p {
-      margin: 5px 0;
-    }
-
-    .action-buttons {
-      margin-top: 10px;
-    }
-
-    .action-buttons button {
-      margin-right: 10px;
-      background: #4a5568;
-      color: white;
-    }
-
-    .action-buttons button:hover {
-      background: #2d3748;
-    }
-  </style>
+  <title>EstateCore Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="container">
-    <button id="logout" class="logout-btn">Logout</button>
-    <h2>Admin Panel</h2>
 
-    <form id="property-form">
+  <div class="container">
+    <h1>🏠 EstateCore Admin Dashboard</h1>
+
+    <button class="dark-toggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
+    <button onclick="logout()" style="float:right; margin-top: -40px;">Logout</button>
+
+    <h3 style="margin-top: 40px;">Add New Property</h3>
+    <form id="add-property-form">
       <input type="text" id="title" placeholder="Property Title" required />
-      <input type="text" id="location" placeholder="Location" required />
-      <input type="number" id="price" placeholder="Price" required />
-      <input type="url" id="image" placeholder="Image URL" required />
-      <textarea id="description" rows="4" placeholder="Description" required></textarea>
-      <button class="add-btn" type="submit">Add Property</button>
+      <textarea id="description" placeholder="Property Description" required></textarea>
+      <input type="url" id="image-url" placeholder="Image URL (optional)" />
+      <input type="file" id="image-file" accept="image/*" />
+      <button type="submit">Add Listing</button>
     </form>
 
-    <div id="properties"></div>
+    <hr style="margin: 40px 0;" />
+
+    <h2>📋 Your Listings</h2>
+    <div id="listing-container"></div>
   </div>
 
+  <!-- Scroll to Top -->
+  <button id="scrollToTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</button>
+
+  <!-- Edit Modal -->
+  <div id="edit-modal" class="modal">
+    <div class="modal-content">
+      <h3>Edit Property</h3>
+      <input type="text" id="edit-title" placeholder="Title" />
+      <textarea id="edit-description" placeholder="Description"></textarea>
+      <input type="url" id="edit-image-url" placeholder="Image URL (optional)" />
+      <input type="file" id="edit-image-file" accept="image/*" />
+      <button onclick="updateListing()">Save Changes</button>
+      <button onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="supabase-config.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
