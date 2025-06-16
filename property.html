@@ -1,74 +1,45 @@
+<!-- property.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Property Details</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f4f6f8;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    }
-
-    .property-img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    h1 {
-      margin: 20px 0 10px;
-      font-size: 28px;
-      color: #2b6cb0;
-    }
-
-    .location, .price {
-      color: #666;
-      font-size: 18px;
-    }
-
-    .description {
-      margin-top: 20px;
-      font-size: 16px;
-      color: #333;
-      line-height: 1.6;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Property Details | EstateCore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container" id="property-details"></div>
+
+  <div class="container">
+    <a href="index.html" class="back-link">← Back to Listings</a>
+    <div id="property-details">
+      <h1>Loading...</h1>
+    </div>
+  </div>
 
   <script>
+    // Fetch property from localStorage using the ID in the URL
+    const container = document.getElementById('property-details');
     const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
+    const id = parseInt(params.get('id'));
 
-    const properties = JSON.parse(localStorage.getItem("properties") || "[]");
+    function loadProperty() {
+      const properties = JSON.parse(localStorage.getItem('properties') || '[]');
+      const property = properties.find(p => p.id === id);
+      if (!property) {
+        container.innerHTML = `<h2>Property Not Found</h2><p>This listing may have been removed.</p>`;
+        return;
+      }
 
-    const prop = properties[Number(id)];
-
-    if (!prop) {
-      document.getElementById("property-details").innerHTML = "<h1>Property Not Found</h1>";
-    } else {
-      document.getElementById("property-details").innerHTML = `
-        <img class="property-img" src="${prop.image || 'https://via.placeholder.com/800x400'}" alt="Property" />
-        <h1>${prop.title}</h1>
-        <div class="location">📍 ${prop.location}</div>
-        <div class="price">💲 ${prop.price}</div>
-        <div class="description">${prop.description || 'No description provided.'}</div>
+      container.innerHTML = `
+        <h1>${property.title}</h1>
+        <img src="${property.image}" alt="${property.title}" style="max-width: 100%; border-radius: 10px;" />
+        <p style="margin-top: 20px;">${property.description}</p>
       `;
     }
+
+    loadProperty();
   </script>
+
 </body>
 </html>
